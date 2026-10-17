@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AutoNova — Carros online, do clique à chave</title>
+<style>
+:root{--bg:#f4f4f2;--fg:#141416;--mut:#6b6b72;--card:#fff;--line:rgba(20,20,22,.1);--acc:#c2433f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0c0e;--fg:#f5f5f7;--mut:#9a9aa3;--card:#17171a;--line:rgba(255,255,255,.1);--acc:#ef6a4a}}
+:root[data-theme="dark"]{--bg:#0c0c0e;--fg:#f5f5f7;--mut:#9a9aa3;--card:#17171a;--line:rgba(255,255,255,.1);--acc:#ef6a4a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:20px}.logo b{color:var(--acc)}
+nav a.btn{font-size:14px}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px}
+.btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+.hero{padding:56px 0 40px;text-align:center}
+.tag{display:inline-block;font:12px ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+h1{font-size:clamp(38px,7vw,76px);line-height:1.02;letter-spacing:-.035em;margin:0 auto 20px;max-width:880px}
+h1 em{font-style:normal;color:var(--acc)}
+.hero p{max-width:600px;margin:0 auto 28px;color:var(--mut);font-size:18px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:48px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.stat b{display:block;font-size:34px;letter-spacing:-.03em}.stat span{color:var(--mut);font-size:14px}
+h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.03em;margin:70px 0 10px;text-align:center}
+.sub{text-align:center;color:var(--mut);margin:0 auto 40px;max-width:560px}
+.folders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px 24px;justify-items:center;align-items:end}
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.about div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.about h3{margin:0 0 6px;font-size:18px}.about p{margin:0;color:var(--mut);font-size:15px}
+.final{margin:80px 0 40px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:48px 20px}
+.final h2{margin-top:0}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 40px}
+.hint{text-align:center;font:11px ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-top:34px}
+
+/* ---- carros ---- */
+.cr{overflow:hidden;margin-bottom:20px;-webkit-mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent)}
+.ct{display:flex;gap:20px;width:max-content;animation:slide var(--dur,40s) linear infinite}
+.cr.rev .ct{animation-direction:reverse}
+.cr:hover .ct{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.cc{width:290px;flex:none;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.cc .st{padding:18px 5px 4px;background:var(--g)}
+.cc svg{display:block;width:100%;height:auto}
+.cc .in{padding:14px 18px 18px}
+.cc b{display:block;font-size:16px;letter-spacing:-.01em}
+.cc small{display:block;color:var(--mut);font-size:13px;margin:2px 0 10px}
+.cc .pr{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.cc .pr i{font-style:normal;font-size:11px;font-weight:600;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:2px 10px}
+@media (prefers-reduced-motion:reduce){.ct{animation:none}}
+/* ---- depoimentos ---- */
+.tcols{display:flex;justify-content:center;gap:24px;max-height:740px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 75%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 75%,transparent)}
+.tcol{width:100%;max-width:320px}.tcol:nth-child(2){display:none}.tcol:nth-child(3){display:none}
+@media(min-width:768px){.tcol:nth-child(2){display:block}}
+@media(min-width:1024px){.tcol:nth-child(3){display:block}}
+.track{display:flex;flex-direction:column;gap:24px;padding-bottom:24px;background:var(--bg);animation:rise var(--dur,15s) linear infinite}
+.tcol:hover .track{animation-play-state:paused}
+@keyframes rise{to{transform:translateY(-50%)}}
+.tc{padding:34px 30px;border-radius:24px;border:1px solid var(--line);background:var(--card);box-shadow:0 10px 30px -12px rgba(194,67,63,.22);font-size:15px}
+.who{display:flex;align-items:center;gap:10px;margin-top:20px}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-size:14px;flex:none}
+.who b{display:block;font-weight:600;letter-spacing:-.01em;line-height:1.3}.who span{display:block;color:var(--mut);font-size:13px;line-height:1.3}
+.chip{display:inline-block;border:1px solid var(--line);padding:4px 16px;border-radius:10px;font-size:14px}
+@media (prefers-reduced-motion:reduce){.track{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><div class="logo">Auto<b>Nova</b></div><a class="btn ghost" href="#contato">Falar comigo</a></nav>
+
+  <header class="hero">
+    <div class="tag">Concept · E-commerce automotivo</div>
+    <h1>Comprar carro online, <em>sem fricção.</em></h1>
+    <p>A AutoNova leva o showroom para a sua tela: catálogo verificado, financiamento em minutos e entrega na porta de casa.</p>
+    <div class="cta"><a class="btn" href="#carros">Explorar a experiência</a><a class="btn ghost" href="#sobre">Ver o projeto</a></div>
+  </header>
+
+  <section class="stats">
+    <div class="stat"><b>+4.200</b><span>carros vendidos online</span></div>
+    <div class="stat"><b>48 h</b><span>da escolha à aprovação</span></div>
+    <div class="stat"><b>7 dias</b><span>para devolver, sem custo</span></div>
+    <div class="stat"><b>4,9 ★</b><span>satisfação dos clientes</span></div>
+  </section>
+
+  <section id="carros">
+    <div style="text-align:center"><span class="chip">Estoque</span></div>
+    <h2 style="margin-top:20px">Carros disponíveis agora</h2>
+    <p class="sub">Todos vistoriados, com fotos reais e preço final. Passe o mouse para pausar.</p>
+    <div class="cr" id="cr1"></div>
+    <div class="cr rev" id="cr2"></div>
+  </section>
+
+  <section id="depoimentos">
+    <div style="text-align:center"><span class="chip">Depoimentos</span></div>
+    <h2 style="margin-top:20px">Experiências de quem já comprou</h2>
+    <p class="sub">Veja o que nossos clientes dizem sobre comprar um carro sem sair de casa.</p>
+    <div class="tcols" id="tcols"></div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre o projeto</h2>
+    <p class="sub">Uma apresentação de produto pensada para mostrar design, front-end e atenção aos detalhes.</p>
+    <div class="about">
+      <div><h3>Design com intenção</h3><p>Interface limpa, tipografia forte e microinterações que explicam o produto sem texto extra.</p></div>
+      <div><h3>Front-end cuidadoso</h3><p>Responsivo, acessível por teclado, com tema claro/escuro e respeito a movimento reduzido.</p></div>
+      <div><h3>Visão de negócio</h3><p>Cada seção responde a uma dúvida real de quem compra um carro sem entrar numa concessionária.</p></div>
+    </div>
+  </section>
+
+  <section class="final" id="contato">
+    <h2>Vamos conversar?</h2>
+    <p class="sub">Gostou do projeto? Me chame no LinkedIn e vamos construir algo parecido para o seu time.</p>
+    <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">Conectar no LinkedIn</a>
+  </section>
+  <footer>© 2026 AutoNova · Projeto conceitual de portfólio</footer>
+</div>
+
+<script>
+const T=[
+["Comprei meu SUV em uma tarde. Escolhi, simulei o financiamento e assinei tudo pelo celular, sem enrolação.","Briana Patton","Gerente de operações"],
+["A entrega chegou no dia combinado, com o carro impecável. Dá para acompanhar tudo em tempo real.","Bilal Ahmed","Analista de TI"],
+["O atendimento me guiou em cada etapa e tirou todas as dúvidas. Me senti seguro durante a compra.","Saman Malik","Líder de suporte"],
+["A vistoria de 120 itens me deu confiança. O carro era exatamente o que estava no anúncio.","Omar Raza","Empresário"],
+["Aprovação do financiamento em 48 horas. Muito mais rápido do que qualquer concessionária.","Zainab Hussain","Gerente de projetos"],
+["Usei os 7 dias de devolução só por precaução e nem precisei. Compra sem risco de verdade.","Aliza Khan","Analista de negócios"],
+["Interface simples, fotos reais e preço claro. Zero surpresa na hora de fechar.","Farhan Siddiqui","Diretor de marketing"],
+["Entenderam o que eu precisava e sugeriram o modelo certo para a minha família.","Sana Sheikh","Gerente de vendas"],
+["Troquei o carro da empresa inteira por aqui. Processo organizado e transparente do início ao fim.","Hassan Ali","Gestor de e-commerce"]];
+const G=["#c2433f,#2a1e2a","#22395e,#6f97c2","#3e2850,#b3502f","#173024,#a7843a","#a3201a,#ff8a5c","#3d5f68,#07090c"];
+const card=(t,i)=>`<div class="tc"><div>${t[0]}</div><div class="who"><div class="av" style="background:linear-gradient(135deg,${G[i%G.length]})">${t[1].split(" ").map(w=>w[0]).join("")}</div><div><b>${t[1]}</b><span>${t[2]}</span></div></div></div>`;
+document.getElementById("tcols").innerHTML=[0,1,2].map(c=>{const set=T.slice(c*3,c*3+3).map((t,i)=>card(t,c*3+i)).join("");return`<div class="tcol"><div class="track" style="--dur:${[15,19,17][c]}s">${set+set}</div></div>`}).join("");
+const P={sedan:['M10 84L10 66Q10 58 22 56L70 50Q88 28 118 26L180 26Q206 28 224 50L256 56Q272 60 272 74L272 84Z','M96 48Q108 33 124 32L146 32L146 48Z M154 32L180 32Q196 35 210 48L154 48Z'],suv:['M10 84L10 62Q10 54 22 52L60 48L84 24L206 24Q222 26 232 46L258 54Q272 58 272 72L272 84Z','M92 30L146 30L146 48L72 48Z M154 30L202 30Q214 32 222 48L154 48Z']};
+const car=(t,c)=>`<svg viewBox="0 0 280 120" role="img" aria-label="Ilustração de carro"><ellipse cx="140" cy="102" rx="122" ry="6" fill="rgba(0,0,0,.28)"/><path d="${P[t][0]}" fill="${c}"/><path d="${P[t][1]}" fill="rgba(255,255,255,.6)"/><rect x="256" y="62" width="14" height="5" rx="2" fill="#ffe9a8"/><rect x="10" y="64" width="9" height="5" rx="2" fill="#ff4d4d"/><circle cx="70" cy="84" r="17" fill="#151518"/><circle cx="70" cy="84" r="7" fill="#9a9aa3"/><circle cx="214" cy="84" r="17" fill="#151518"/><circle cx="214" cy="84" r="7" fill="#9a9aa3"/></svg>`;
+const CARS=[
+["SUV Premium","2025","0 km","R$ 189.900","suv","#c2433f","Novo"],
+["Sedan Executivo","2024","12 mil km","R$ 142.500","sedan","#22395e","Revisado"],
+["SUV Aventura","2023","28 mil km","R$ 158.000","suv","#173024","Revisado"],
+["Sedan Compacto","2024","9 mil km","R$ 96.900","sedan","#8f6c9c","Oferta"],
+["SUV Família","2022","41 mil km","R$ 124.300","suv","#3d5f68","Revisado"],
+["Sedan Esportivo","2025","0 km","R$ 211.000","sedan","#a3201a","Novo"],
+["SUV Urbano","2023","19 mil km","R$ 112.700","suv","#a7843a","Oferta"],
+["Sedan Clássico","2021","52 mil km","R$ 84.900","sedan","#6f6f78","Revisado"]];
+const GR=["#e9e9ee,#c9ced8","#f3e6df,#e2c2b6","#dfe8e3,#bccbc2","#e6e0ee,#c8bddb"];
+const cc=(c,i)=>`<div class="cc"><div class="st" style="--g:linear-gradient(160deg,${GR[i%4]})">${car(c[4],c[5])}</div><div class="in"><b>${c[0]}</b><small>${c[1]} · ${c[2]}</small><div class="pr"><span>${c[3]}</span><i>${c[6]}</i></div></div></div>`;
+[[0,4,"cr1",38],[4,8,"cr2",46]].forEach(([a,b,id,d])=>{const s=CARS.slice(a,b).map((c,i)=>cc(c,a+i)).join("");document.getElementById(id).innerHTML=`<div class="ct" style="--dur:${d}s">${s+s}</div>`});
+</script>
+</body>
+</html>
