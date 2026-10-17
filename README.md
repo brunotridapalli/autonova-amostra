@@ -11,3 +11,11 @@ Botão de contato para o LinkedIn
 Tecnologias
 HTML, CSS e JavaScript puro
 Arquivo único (autonova.html), sem instalação
+
+Observações
+Os carros, preços e depoimentos são fictícios.
+Os carros são ilustrações em SVG.
+Tema claro e escuro automático.
+Contato
+
+Me chame no LinkedIn: (https://www.linkedin.com/in/bruno-tridapalli/)
