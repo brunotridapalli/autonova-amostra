@@ -27,6 +27,8 @@ Os carros são ilustrações em SVG.
 
 Tema claro e escuro automático.
 
-Contato
+
+
+Contato:
 
 Me chame no LinkedIn: (https://www.linkedin.com/in/bruno-tridapalli/)
